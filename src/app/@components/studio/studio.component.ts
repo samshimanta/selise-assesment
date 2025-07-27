@@ -19,7 +19,7 @@ export class StudioComponent implements OnInit {
 
   rangeDates:any
   invalidDates !: Date[];
-  es !: { firstDayOfWeek: number; dayNames: string[]; dayNamesShort: string[]; dayNamesMin: string[]; monthNames: string[]; monthNamesShort: string[]; today: string; clear: string; };
+  es:any
 
 
     ngOnInit(): void {
