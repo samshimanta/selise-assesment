@@ -17,7 +17,7 @@ export class StudioComponent implements OnInit {
   studio!: any;
   visible: boolean = false;
 
-  rangeDates:any
+  rangeDates: Date[] = [];
   invalidDates !: Date[];
   es:any
 

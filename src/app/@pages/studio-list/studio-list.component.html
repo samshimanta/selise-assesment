@@ -8,6 +8,14 @@
     <app-studio [studio]="studio"></app-studio>
 </ng-template> -->
 
+<button (click)="filterStudiosByRadius(radius)" [(ngModel)]="radius">Radius in km</button>
+
+<!-- <button (click)="filterStudiosByRadius(radius)">Search Nearby Studios</button> -->
+<button (click)="getUserLocation()">Get My Location</button>
+<div *ngIf="userLocation">
+  Your location: {{ userLocation.lat }}, {{ userLocation.lng }}
+</div>
+
 <input
   type="text"
   
