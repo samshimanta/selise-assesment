@@ -1,0 +1,30 @@
+<!-- <div>
+    <span> {{studio.Name}} </span>
+    <span> {{studio.Type}}  </span>
+</div> -->
+
+<div>
+   <span> {{studio.Name}} </span>
+    <span> {{studio.Type}}  </span>
+    <span> {{studio.Rating}}  </span>
+</div>
+
+<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" [src]="studio.Images[0]" />
+    </ng-template>
+    <p>
+        {{studio.Name}} is a {{studio.Type}} studio located in {{studio.Location.Area}}. It has a rating of {{studio.Rating}}.
+        The studio is known for its excellent facilities and services, making it a popular choice among clients
+    </p>
+    <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+            <p-button label="Booking Now" class="w-full" styleClass="w-full" (click)="openDialog()" />
+        </div>
+    </ng-template>
+</p-card>
+
+   <p-dialog header="Select Date & Time" [modal]="true" [(visible)]="visible" >
+       <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" [showTime]="true">
+    </p-calendar>
+   </p-dialog>

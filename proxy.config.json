@@ -1,0 +1,11 @@
+{
+  "/api/*": {
+    "target": "https://gist.github.com/rash3dul-islam/88e1565bea2dd1ff9180ff733617a565",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

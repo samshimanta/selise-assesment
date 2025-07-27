@@ -1,0 +1,28 @@
+<!-- <p>studio-list works!</p>
+<input type="text" (keyup)="search($event)"> -->
+<!-- <ul *ngFor="let studio of studioData">
+    <li> {{studio.Name}} </li>
+</ul> -->
+<!-- 
+<ng-template *ngFor="let studio of studioData">
+    <app-studio [studio]="studio"></app-studio>
+</ng-template> -->
+
+<input
+  type="text"
+  
+  (keyup)="search($event)"
+  placeholder="Search by area..."
+  autocomplete="off"
+/>
+<ul *ngIf="suggestions.length" class="autocomplete-list">
+  <li *ngFor="let suggestion of suggestions"  (click)="selectSuggestion(suggestion)" >
+    {{ suggestion }}
+  </li>
+</ul>
+
+
+<ng-container *ngFor="let studio of studioData">
+  <app-studio [studio]="studio"></app-studio>
+</ng-container>
+
