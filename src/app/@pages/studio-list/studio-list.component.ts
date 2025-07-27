@@ -19,6 +19,7 @@ export class StudioListComponent implements OnInit {
   filteredStudios !: any[];
   suggestions : any[] = [];
   searchTerm: string = '';
+  BookingForm: any;
 
     constructor(
     private apiService: ApiService
@@ -124,5 +125,9 @@ filterStudiosByRadius(radiusKm: number) {
   
 
   this.studioData = this.filteredStudios
+    console.log(`Filtered studios within ${radiusKm} km:`, this.filteredStudios);
+
 }
+
+
 }

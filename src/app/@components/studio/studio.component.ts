@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Studio } from 'src/app/studio';
 
 @Component({
@@ -8,8 +9,6 @@ import { Studio } from 'src/app/studio';
 })
 export class StudioComponent implements OnInit {
 
-  minDate!: Date;
-  maxDate!: Date;
 
   
 
@@ -22,38 +21,34 @@ export class StudioComponent implements OnInit {
   es:any
 
 
-    ngOnInit(): void {
-       this.es = {
-            firstDayOfWeek: 1,
-            dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-            dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-            dayNamesMin: [ "D","L","M","X","J","V","S" ],
-            monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-            monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
-            today: 'Hoy',
-            clear: 'Borrar'
-        }
- let today = new Date();
-        let month = today.getMonth();
-        let year = today.getFullYear();
-        let prevMonth = (month === 0) ? 11 : month -1;
-        let prevYear = (prevMonth === 11) ? year - 1 : year;
-        let nextMonth = (month === 11) ? 0 : month + 1;
-        let nextYear = (nextMonth === 0) ? year + 1 : year;
-        this.minDate = new Date();
-        this.minDate.setMonth(prevMonth);
-        this.minDate.setFullYear(prevYear);
-        this.maxDate = new Date();
-        this.maxDate.setMonth(nextMonth);
-        this.maxDate.setFullYear(nextYear);
+    showDialog() {
+        this.visible = true;
+    }
 
-        let invalidDate = new Date();
-        invalidDate.setDate(today.getDate() - 1);
-        this.invalidDates = [today,invalidDate];
+  BookingForm!:FormGroup;
+  constructor(){
+
   }
+
+    ngOnInit(): void {
+
+          this.BookingForm = new FormGroup({
+      'userData': new FormGroup({
+          'name':new FormControl(null,[Validators.required]),
+          'email':new FormControl(null,[Validators.required ]),
+          'date':new FormControl(null,[Validators.required]),
+      }),
+     
+    })
+  }
+    
 
   openDialog(){
     this.visible = true;
+  }
+
+  onSubmit(){
+    console.log('Form submitted:', this.BookingForm.value);
   }
 
 

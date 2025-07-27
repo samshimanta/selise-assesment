@@ -9,7 +9,7 @@
     <span> {{studio.Rating}}  </span>
 </div>
 
-<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+<p-card [header]="studio.Name" [subheader]="studio.Type" [style]="{ width: '360px' }">
     <ng-template pTemplate="header">
         <img alt="Card" [src]="studio.Images[0]" />
     </ng-template>
@@ -19,12 +19,63 @@
     </p>
     <ng-template pTemplate="footer">
         <div class="flex gap-3 mt-1">
-            <p-button label="Booking Now" class="w-full" styleClass="w-full" (click)="openDialog()" />
+            <!-- <p-button label="Booking Now" class="w-full" styleClass="w-full" (click)="openDialog()" /> -->
+             <p-button label="Booking Now" (onClick)="showDialog()" label="Show" />
         </div>
+         <p-button (onClick)="showDialog()" label="Show" />
+        {{visible}}
+        <!-- Dialog visibility for debug: {{visible}} -->
     </ng-template>
 </p-card>
 
-   <p-dialog header="Select Date & Time" [modal]="true" [(visible)]="visible" >
-       <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" [showTime]="true">
-    </p-calendar>
-   </p-dialog>
+
+<!-- <ng-template *ngIf="visible" > -->
+
+        <!-- <form [formGroup]="BookingForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label for="name">Name</label>
+                <input id="name" formControlName="userData.name" />
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" formControlName="userData.email" />
+            </div>
+            <div class="field">
+                <label for="date">Date</label>
+                <p-calendar 
+    inputId="calendar-12h" 
+    formControlName="date"
+    [showTime]="true" 
+    [hourFormat]="'12'" >
+                </p-calendar>
+            </div>
+            <button type="submit" pButton label="Submit"></button>
+        </form> -->
+    
+    <!-- <input type="text" placeholder="Enter your name" formControlName="name" />
+    <input type="email" placeholder="Enter your email" formControlName="email" />.  -->
+  
+    <div class="card flex justify-content-center">
+   
+    <p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <span class="p-text-secondary block mb-5">Update your information.</span>
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="username" class="font-semibold w-6rem">Username</label>
+            <input pInputText id="username" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="email" class="font-semibold w-6rem">Email</label>
+            <input pInputText id="email" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+            <p-button label="Save" (onClick)="visible = false" />
+        </div>
+    </p-dialog>
+</div>
+   
+
+
+
+
+ 
